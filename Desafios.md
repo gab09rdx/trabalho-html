@@ -1,0 +1,2 @@
+Poder seprar o projeto em funcionalidades e cada funcionalidade ser uma branch facilitou o processo de desenvolvimento.
+Durante o desenvolvimento fiz alterações que quebraram a aplicação e pude usar o git para voltar para um estado anterior onde as coisas funcionavam.
