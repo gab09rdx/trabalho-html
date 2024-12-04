@@ -4,10 +4,14 @@
     <title>Trabalho</title>
     <meta charset="utf-8">
     <script>
-        var despesas = []
+        var despesas = [];
         
         function cadastrarDespesa() {
-            
+            var nome = document.getElementById("nome_despesa");
+            var categoria = document.getElementById("categoria_despesa");
+            var valor = document.getElementById("valor_despesa");
+
+            despesas.push({nome: nome.value, categoria: categoria.value, valor: valor.value});
         }
     </script>
   </head>
@@ -16,12 +20,15 @@
         <h1>Cadastro de despesas</h1>
         <span>Nome</span>
         <input id="nome_despesa" type="text"/>
+        <span>Categoria</span>
+        <input id="categoria_despesa" type="text"/>
         <span>Valor</span>
-        <input id="valor_despesa" type="text"/>
-        <button onclick="cadastrarDespesa()" title="Cadastrar">Cadastrar</button>
+        <input id="valor_despesa" type="number"/>
+        <button onclick="cadastrarDespesa()" title="Cadastrar">Cadastrar Despesas</button>
     </section>
     <section>
         <h1>Despesas</h1>
+        <button onclick="cadastrarDespesa()" title="Cadastrar">Listar Despesas</button>
         <div></div>
     </section>
     <section>
