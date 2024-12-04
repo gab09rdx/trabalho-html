@@ -23,6 +23,26 @@
         function construirLinhaDespesa(despesa) {
             return `${despesa.categoria} ${despesa.nome} ${despesa.valor}`;
         }
+
+        function gerarRelatorio() {
+            var resultado = agrupar(despesas, 'categoria');
+            var keys = Object.keys(resultado);
+            document.getElementById('relatorio_despesas').innerHTML = keys.map(key => {
+                var valores = resultado[key];
+                var total = 0;
+                valores.forEach(valor => { 
+                    total = total + parseFloat(valor.valor);
+                });
+                return `<li>${key}: ${total}</li>`
+            }).join('');    
+        }
+
+        function agrupar(array, key) {
+            return array.reduce(function(rv, x) {
+                (rv[x[key]] = rv[x[key]] || []).push(x);
+                return rv;
+            }, {});
+        }
     </script>
   </head>
   <body>
@@ -43,7 +63,8 @@
     </section>
     <section>
         <h1>Relatório de despesas</h1>
-        <button onclick="cadastrarDespesa()" title="Cadastrar">Gerar Relatório</button>
+        <button onclick="gerarRelatorio()" title="Cadastrar">Gerar Relatório</button>
+        <ol id="relatorio_despesas"></ol>
     </section>
   </body>
 </html>
